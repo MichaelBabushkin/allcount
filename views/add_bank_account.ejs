@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="../css/register.css">
+
+<div class="login-box">
+        <h2 class="text-center mb-3 text-success">
+          <i class="fas fa-user-plus"></i> Add Bank Account
+        </h2>
+        <% include ./partials/messages %>
+        <form action="/users/add_account" method="POST">
+          <div class="form-group">
+            <label for="bank_name">Bank Name:</label>
+            <input type="name" id="bank_name" name="bank_name" class="form-control" placeholder="Enter Bank Name"
+              value="<%= typeof bank_name != 'undefined' ? bank_name : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="account_number">Account Number:</label>
+            <input type="text" id="account_number" name="account_number" class="form-control" placeholder="Enter Account Number"
+              value="<%= typeof account_number != 'undefined' ? account_number : '' %>" />
+          </div>
+          <div class="form-group">
+            <label for="another_account" class="another_account_label">Add Another Account?</label>
+            <input type="checkbox" id="checkbox" name="another_account" class="form-control" />
+          </div>
+        
+          <!-- <p class="mt-4 signup_link">Have Another Account? <a class="ml-2" type="submit" href="/users/add_account">Add It Also</a></p> -->
+         
+          <button type="submit" class="btn btn-primary btn-block mt-5">
+            Add Account
+          </button>
+       
+       
+        </form>
+      </div>
+
+
+<a class="logo">
+  <img src="../images/logo.jpg" alt="">
+</a>
