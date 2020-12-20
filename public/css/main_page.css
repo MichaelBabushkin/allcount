@@ -1,8 +1,3 @@
-
-
-/* Please ❤ this if you like it! */
-
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 *,
 *::before,
@@ -67,6 +62,13 @@ h6{
 .color-blue{
   color: #7a95ec;
 }
+.color-red{
+  color: #ad1643;
+}
+.color-green{
+  color: #2fd87e;
+}
+
 .section-fluid-main{
   position: relative;
   display: block;

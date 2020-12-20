@@ -23,7 +23,15 @@ const BankSchema = new mongoose.Schema({
   outcome: {
     type: String,
     required: true
-  }
+  },
+  credit_debt: {
+    type: String,
+    required: true
+  },
+  loan: {
+    type: String,
+    required: true
+  },
 });
 
 const Bank = mongoose.model('Bank', BankSchema);

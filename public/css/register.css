@@ -133,6 +133,13 @@ html {
 #checkbox{
     width: 10%;
 }
+#bank_name{
+  font-size: 1.1rem;
+  width: 100%;
+  color: #495057;
+  padding: 1%;
+  padding-left: 5%;
+}
 /* .another_account_label{
     width: 10%;
 } */

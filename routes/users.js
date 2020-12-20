@@ -111,8 +111,10 @@ router.post('/add_account', (req, res) => {
     bank_name,
     account_number,
     owner_email:"abcd@gmail.com",
-    income:getRandomInt(300,1500),
-    outcome:getRandomInt(0,500)
+    income:getRandomInt(3000,12000),
+    outcome:getRandomInt(2000,9000),
+    credit_debt:getRandomInt(200,1300),
+    loan:getRandomInt(500,6300)
   });
 
   newBank.save().then(bank => {

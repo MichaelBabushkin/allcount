@@ -8,8 +8,13 @@
         <form action="/users/add_account" method="POST">
           <div class="form-group">
             <label for="bank_name">Bank Name:</label>
-            <input type="name" id="bank_name" name="bank_name" class="form-control" placeholder="Enter Bank Name"
-              value="<%= typeof bank_name != 'undefined' ? bank_name : '' %>" />
+            <select id="bank_name" name="bank_name" value="<%= typeof bank_name != 'undefined' ? bank_name : '' %>" >
+              <option value="Leumi">Leumi</option>
+              <option value="Discount">Discount</option>
+              <option value="Ha-Poalim">Ha-Poalim</option>
+              <option value="Tfahot">Tfahot</option>
+            </select>
+
           </div>
           <div class="form-group">
             <label for="account_number">Account Number:</label>
@@ -20,9 +25,7 @@
             <label for="another_account" class="another_account_label">Add Another Account?</label>
             <input type="checkbox" id="checkbox" name="another_account" class="form-control" />
           </div>
-        
-          <!-- <p class="mt-4 signup_link">Have Another Account? <a class="ml-2" type="submit" href="/users/add_account">Add It Also</a></p> -->
-         
+                 
           <button type="submit" class="btn btn-primary btn-block mt-5">
             Add Account
           </button>
