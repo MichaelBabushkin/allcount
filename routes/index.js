@@ -8,13 +8,14 @@ const Bank = require('../models/Bank');
 router.get('/', forwardAuthenticated, (req, res) => res.render('login'));
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) =>
-// Bank.findOne({}).then(
+router.get('/dashboard', ensureAuthenticated,async (req, res) =>{
+  let bank_info = await Bank.find({owner_email: req.user.email});
+  console.log(bank_info);
   res.render('dashboard', {
     user: req.user,
-    // banks: req.banks
-  })
-);
+    banks: bank_info
+  });
+});
 
 
 module.exports = router;

@@ -34,7 +34,7 @@ router.get('/get_account_data', forwardAuthenticated, (req, res) => res.render('
 
 
 // Register
-router.post('/register', (req, res) => {
+router.post('/register', forwardAuthenticated, (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
 
@@ -97,7 +97,7 @@ router.post('/register', (req, res) => {
   }
 });
 // Add Bank Account
-router.post('/add_account', (req, res) => {
+router.post('/add_account', forwardAuthenticated, (req, res) => {
   const { bank_name, account_number ,another_account, owner_email, income, outcome } = req.body;
   let errors = [];
 
@@ -106,11 +106,12 @@ router.post('/add_account', (req, res) => {
     errors.push({ msg: 'Please enter all fields' });
   }
   let checkedValue = req.body['another_account']; 
- 
+  console.log(req.params);
+
   const newBank = new Bank({
     bank_name,
     account_number,
-    owner_email:"abcd@gmail.com",
+    owner_email:"root@gmail.com",
     income:getRandomInt(3000,12000),
     outcome:getRandomInt(2000,9000),
     credit_debt:getRandomInt(200,1300),

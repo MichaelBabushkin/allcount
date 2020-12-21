@@ -30,7 +30,7 @@ app.use(express.static(__dirname + '/public'));
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
-// Express session
+// Express session 
 app.use(
   session({
     secret: 'secret',
