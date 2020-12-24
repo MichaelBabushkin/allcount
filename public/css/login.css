@@ -139,3 +139,54 @@ label{
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
 }
+
+@media (max-width: 575px) {
+  .login-box {
+    position: fixed;
+    top: 54%;
+    left: 50%;
+    width: 92%;
+    padding: 40px;
+    margin-top: 4%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+
+
+
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+
+
+  .logo img {
+    height: 56px;
+    width: 14%;
+    border-radius: 50px;
+    display: block;
+    transition: filter 250ms linear;
+  }
+
+  .welcome-header{
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    width: 100%;
+    padding: 16%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    box-shadow: 0px 0px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+}

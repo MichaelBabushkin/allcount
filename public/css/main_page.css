@@ -542,6 +542,34 @@ h6{
   .date-btn:not(:checked) + label{
     padding: 5px;
   }
+  .logout{
+    position: absolute;
+    top: 14%;
+    right: 10%;
+
+  }
+  .add_account{
+    position: absolute;
+    top: 19%;
+    right: 10%;
+
+  }
+  .logo {
+    position: absolute;
+    top: -12%;
+    left: -6%;
+
+  }
+  .logo img {
+    height: 56px;
+    width: auto;
+    border-radius: 50%;
+    display: block;
+    transition: filter 250ms linear;
+  }
+  h6 {
+    font-size: 13px;
+  }
 }
 @media (max-width: 450px) {
   .section-col-2{
