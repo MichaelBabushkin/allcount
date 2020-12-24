@@ -5,14 +5,12 @@ const passport = require('passport');
 // Load User model
 const User = require('../models/User');
 const Bank = require('../models/Bank');
-const { forwardAuthenticated } = require('../config/auth');
+const { forwardAuthenticated,ensureAuthenticated } = require('../config/auth');
+
+
 
 /**
- * Returns a random integer between min (inclusive) and max (inclusive).
- * The value is no lower than min (or the next integer greater than min
- * if min isn't an integer) and no greater than max (or the next integer
- * lower than max if max isn't an integer).
- * Using Math.round() will give you a non-uniform distribution!
+function that returns random number in the given range
  */
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -27,9 +25,11 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
 // Add Account Page
-router.get('/add_account', forwardAuthenticated, (req, res) => res.render('add_bank_account'));
+router.get('/add_account/:email',ensureAuthenticated, (req, res) =>  {
+  res.render('add_bank_account',{email:req.params.email})
+});
 
-//Get Data From Database
+// Get Data From Database
 router.get('/get_account_data', forwardAuthenticated, (req, res) => res.render('dashboard'));
 
 
@@ -87,7 +87,11 @@ router.post('/register', forwardAuthenticated, (req, res) => {
                   'success_msg',
                   'You are now registered and can add acoount details'
                 );
-                res.redirect('/users/add_account');
+
+                // res.redirect( `/users/add_account/${email}` );
+                res.redirect( `/users/login` );
+
+
               })
               .catch(err => console.log(err));
           });
@@ -97,21 +101,21 @@ router.post('/register', forwardAuthenticated, (req, res) => {
   }
 });
 // Add Bank Account
-router.post('/add_account', forwardAuthenticated, (req, res) => {
-  const { bank_name, account_number ,another_account, owner_email, income, outcome } = req.body;
-  let errors = [];
+router.post('/add_account', ensureAuthenticated, (req, res) => {
+ const { bank_name, account_number ,another_account, owner_email, income, outcome } =  req.body;
 
+  let errors = [];
   // if (!bank_name || !account_number|| !owner_email || !income || !outcome) {
-  if (!bank_name || !account_number ) {
+  if (!bank_name || !account_number || owner_email) {
     errors.push({ msg: 'Please enter all fields' });
   }
-  let checkedValue = req.body['another_account']; 
-  console.log(req.params);
+  let checkedValue = req.body['another_account'];
+
 
   const newBank = new Bank({
     bank_name,
     account_number,
-    owner_email:"root@gmail.com",
+    owner_email,
     income:getRandomInt(3000,12000),
     outcome:getRandomInt(2000,9000),
     credit_debt:getRandomInt(200,1300),
@@ -121,10 +125,10 @@ router.post('/add_account', forwardAuthenticated, (req, res) => {
   newBank.save().then(bank => {
                 req.flash(
                   'success_msg',
-                  'Your Bank account added o the dashboard successfully!'
+                  'Your Bank account added to the dashboard successfully!'
                 );
                 if(checkedValue=='on'){
-                  res.redirect('/users/add_account');
+                  res.redirect(`/users/add_account/${owner_email}`);
                 }else{
                   res.redirect('/users/login');
                 }
@@ -133,7 +137,21 @@ router.post('/add_account', forwardAuthenticated, (req, res) => {
 });
 
 
-//Dashboard
+/* DELETE User BY Email */
+router.get('/delete/:account_number', async function(req, res) {
+  let account = await Bank.find({account_number: req.params.account_number});
+  console.log(account)
+  Bank.findOneAndDelete({account_number:req.params.account_number}, function (err) {
+    if (err) {
+      req.flash('error_msg', 'Record Not Deleted');
+      res.redirect('/dashboard');
+    } else {
+
+      req.flash('success_msg', 'Record Deleted');
+      res.redirect('/dashboard');
+    }
+  });
+});
 
 // Login
 router.post('/login', (req, res, next) => {

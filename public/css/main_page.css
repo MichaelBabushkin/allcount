@@ -145,7 +145,7 @@ h6{
   width: 100%;
   -ms-flex: 0 0 25%;
   flex: 0 0 25%;
-  max-width: 25%;
+  max-width: 100%;
   padding: 15px;
 }
 .date-btn:checked + label span,
@@ -440,6 +440,14 @@ h6{
   transition: all 250ms linear;
   background-color: brown;
 }
+.add_account{
+  position: fixed;
+  top: 75px;
+  right: 25px;
+  display: block;
+  z-index: 1000;
+  transition: all 250ms linear;
+}
   h3{
   transition: color 200ms 100ms ease;
 }
@@ -462,6 +470,37 @@ h6{
 .result_line{
   width: 220%;
   padding: 2%
+}
+.delete_button{
+  position: relative;
+  width: 100%;
+  background-color: red;
+  border-radius: 100px/3px;
+  margin-top: 5%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffeba7;
+  height: 50px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 250ms linear, color 250ms ease;
+}
+.dashboard_form{
+  width: 100%;
 }
 
 @media (max-width: 767px) {

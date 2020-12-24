@@ -21,55 +21,52 @@
 
         <% if (banks[0]) { %>
             <input class="date-btn" type="radio" id="date-1" name="date-btn" checked/>
-            <label for="date-1"><span> Bank &nbsp<%= banks[0].bank_name %></span> <br/><span>Account: <%= banks[0].account_number %></span></label>
-        <% } else{ %>
-            <script>
-            document.getElementById("income1").innerText="0";
-            document.getElementById("outcome1").innerText="0";
-            document.getElementById("credit1").innerText="0";
-            document.getElementById("loan1").innerText="0";
-            </script>
-        <% } %>
+            <label for="date-1"><span> Bank &nbsp<%= banks[0].bank_name %></span> <br/><span>Account: <%= banks[0].account_number %></span>
+
+            <form class="dashboard_form" action="/users/delete/<%= banks[0].account_number %>" method="GET">
+                <button type="submit" class="btn btn-danger delete_button">Delete Account &nbsp<i class="fas fa-trash"></i></button>
+            </form>
+            </label>
+        <% }else {  %>
+        <span>You dont have accounts yet. please add them to see your info</span>
+        <% }  %>
+
 
         <% if (banks[1]) { %>
-            <input class="date-btn" type="radio" id="date-2" name="date-btn"/>
-            <label for="date-2"><span>Bank &nbsp<%= banks[1].bank_name %></span> <br/><span>Account: <%= banks[1].account_number %></span></label>
-        <% } else{ %>
-            <script>
-                document.getElementById("income2").innerText="0";
-                document.getElementById("outcome2").innerText="0";
-                document.getElementById("credit2").innerText="0";
-                document.getElementById("loan2").innerText="0";
-            </script>
-        <% } %>
+        <input class="date-btn" type="radio" id="date-2" name="date-btn"/>
+            <label for="date-2"><span>Bank &nbsp<%= banks[1].bank_name %></span> <br/><span>Account: <%= banks[1].account_number %></span>
+            <form class="dashboard_form" action="/users/delete/<%= banks[1].account_number %>" method="GET">
+                <button type="submit" class="btn btn-danger delete_button">Delete Account &nbsp<i class="fas fa-trash"></i></button>
+            </form>
+            </label>
+        <% }  %>
+
 
         <% if (banks[2]) { %>
-            <input class="date-btn" type="radio" id="date-3" name="date-btn"/>
-            <label for="date-3"><span>Bank &nbsp<%= banks[2].bank_name %></span> <br/><span>Account: <%= banks[2].account_number %></span></label>
-        <% } else{ %>
-            <script>
-                document.getElementById("income3").innerText="0";
-                document.getElementById("outcome3").innerText="0";
-                document.getElementById("credit3").innerText="0";
-                document.getElementById("loan3").innerText="0";
-            </script>
-        <% } %>
+        <input class="date-btn" type="radio" id="date-3" name="date-btn"/>
+            <label for="date-3"><span>Bank &nbsp<%= banks[2].bank_name %></span> <br/><span>Account: <%= banks[2].account_number %></span>
+            <form class="dashboard_form" action="/users/delete/<%= banks[2].account_number %>" method="GET">
+                <button type="submit" class="btn btn-danger delete_button">Delete Account &nbsp<i class="fas fa-trash"></i></button>
+            </form>
+            </label>
+        <% }  %>
+
 
         <% if (banks[3]) { %>
-            <input class="date-btn" type="radio" id="date-4" name="date-btn"/>
-            <label for="date-4"><span>Bank &nbsp<%= banks[3].bank_name %></span> <br/><span>Account: <%= banks[3].account_number %></span></label>
-        <% } else{ %>
-            <script>
-                document.getElementById("income4").innerText="0";
-                document.getElementById("outcome4").innerText="0";
-                document.getElementById("credit4").innerText="0";
-                document.getElementById("loan4").innerText="0";
-            </script>
-        <% } %>
+        <input class="date-btn" type="radio" id="date-4" name="date-btn"/>
+            <label for="date-4"><span>Bank &nbsp<%= banks[3].bank_name %></span> <br/><span>Account: <%= banks[3].account_number %></span>
+            <form class="dashboard_form" action="/users/delete/<%= banks[3].account_number %>" method="GET">
+                <button type="submit" class="btn btn-danger delete_button">Delete Account &nbsp<i class="fas fa-trash"></i></button>
+            </form>
+            </label>
+
+        <% }  %>
+
 
         <div class="section-col-1">
             <div class="section">
                 <div class="section-progress">
+                    <% if (banks[0]) { %>
                     <div class="income days-30">
                         <div class="income-tooltip">
                             <p>Income</p>
@@ -84,6 +81,8 @@
                             <h6 class ="result_line">Loans: $ <span id = "loan1"><%= banks[0].loan %></span></h6>
                         </div>
                     </div>
+                    <% } %>
+                    <% if (banks[1]) { %>
                     <div class="income days-90">
                         <div class="income-tooltip">
                             <p>Income</p>
@@ -98,6 +97,8 @@
                             <h6 class ="result_line">Loans: $ <span id = "loan2"><%= banks[1].loan %></span></h6>
                         </div>
                     </div>
+                    <% } %>
+                    <% if (banks[2]) { %>
                     <div class="income days-180">
                         <div class="income-tooltip">
                             <p>Income</p>
@@ -112,6 +113,7 @@
                             <h6 class ="result_line">Loans: $ <span id = "loan3"><%= banks[2].loan %></span></h6>
                         </div>
                     </div>
+                    <% } %>
                     <% if (banks[3]) { %>
                     <div class="income days-365">
                         <div class="income-tooltip">
@@ -133,35 +135,60 @@
         </div>
     </div>
 
-    <% var income_sum = 0 %>
-    <% var outcome_sum = 0; %>
 
-<!--JavaScript code for computing the sum of expenses and income-->
+
+<!--JavaScript code for computing the sum of expenses and income (in case they exist)-->
     <script>
-        var getIncomeSum = parseFloat(document.getElementById("income1").innerText)+
-            parseFloat(document.getElementById("income2").innerText)+
-            parseFloat(document.getElementById("income3").innerText)+
-            parseFloat(document.getElementById("income4").innerText);
+    var income_sum =  0;
+    var outcome_sum = 0;
+    </script>
+    <% if (banks[0]) { %>
+        <script>
+              income_sum =  parseFloat(document.getElementById("income1").innerText)
+              outcome_sum = -parseFloat(document.getElementById("outcome1").innerText)-
+                parseFloat(document.getElementById("credit1").innerText)-
+                parseFloat(document.getElementById("loan1").innerText);
+        </script>
+    <% }  %>
+    <% if (banks[1]) { %>
+        <script>
+             income_sum +=  parseFloat(document.getElementById("income2").innerText)
+             outcome_sum =outcome_sum- parseFloat(document.getElementById("outcome2").innerText)-
+                parseFloat(document.getElementById("credit2").innerText)-
+                parseFloat(document.getElementById("loan2").innerText)
+        </script>
+    <% }  %>
+    <% if (banks[2]) { %>
+        <script>
+             income_sum +=  parseFloat(document.getElementById("income3").innerText)
+             outcome_sum =outcome_sum- parseFloat(document.getElementById("outcome3").innerText)-
+                parseFloat(document.getElementById("credit3").innerText)-
+                parseFloat(document.getElementById("loan3").innerText)
+        </script>
+    <% }  %>
+    <% if (banks[3]) { %>
+        <script>
+             income_sum +=  parseFloat(document.getElementById("income4").innerText)
+             outcome_sum =outcome_sum- parseFloat(document.getElementById("outcome4").innerText)-
+                parseFloat(document.getElementById("credit4").innerText)-
+                parseFloat(document.getElementById("loan4").innerText)
+        </script>
+    <% }  %>
 
-        var getOutcomeSum = 0- parseFloat(document.getElementById("outcome1").innerText)-
-            parseFloat(document.getElementById("outcome2").innerText)-
-            parseFloat(document.getElementById("outcome3").innerText)-
-            parseFloat(document.getElementById("outcome4").innerText)-
-            parseFloat(document.getElementById("credit1").innerText)-
-            parseFloat(document.getElementById("credit2").innerText)-
-            parseFloat(document.getElementById("credit3").innerText)-
-            parseFloat(document.getElementById("credit4").innerText)-
-            parseFloat(document.getElementById("loan1").innerText)-
-            parseFloat(document.getElementById("loan2").innerText)-
-            parseFloat(document.getElementById("loan3").innerText)-
-            parseFloat(document.getElementById("loan4").innerText);
-
-        document.getElementById("income_total").innerHTML = getIncomeSum;
-        document.getElementById("expense_total").innerHTML = getOutcomeSum;
+    <script>
+        document.getElementById("income_total").innerHTML = income_sum;
+        document.getElementById("expense_total").innerHTML = outcome_sum;
     </script>
 
     <a class="logo" >
         <img src="./images/logo.jpg" alt="">
     </a>	
 </div>
+
+<!--Add account Button-->
+<form class="add_account_form" action="/users/add_account/<%= user.email %>" method="GET">
+    <button type="submit" class="btn btn-success add_account">Add Account&nbsp<i class="fas fa-plus"></i></button>
+</form>
+
+<!--Logout Button-->
 <a href="/users/logout" class="btn btn-secondary logout">Logout</a>
