@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/register.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608559624994</updated>
       <workItem from="1608559629528" duration="2872000" />
-      <workItem from="1608563014804" duration="65039000" />
+      <workItem from="1608563014804" duration="65752000" />
     </task>
     <task id="LOCAL-00001" summary="added calculation">
       <created>1608570260165</created>
@@ -59,7 +58,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608817269803</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mobile adjustment">
+      <created>1608821485237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608821485237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,6 +86,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added calculation" />
     <MESSAGE value="added dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dashboard" />
+    <MESSAGE value="mobile adjustment" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile adjustment" />
   </component>
 </project>

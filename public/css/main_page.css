@@ -544,13 +544,13 @@ h6{
   }
   .logout{
     position: absolute;
-    top: 14%;
+    top: 17%;
     right: 10%;
 
   }
   .add_account{
     position: absolute;
-    top: 19%;
+    top: 22%;
     right: 10%;
 
   }
@@ -561,8 +561,8 @@ h6{
 
   }
   .logo img {
-    height: 56px;
-    width: auto;
+    height: 48px;
+    width: 60px;
     border-radius: 50%;
     display: block;
     transition: filter 250ms linear;
