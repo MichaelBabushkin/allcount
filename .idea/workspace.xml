@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cbd9bd1-cd6c-4d98-bb20-6138c982d0a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/add_bank_account.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/add_bank_account.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608559624994</updated>
       <workItem from="1608559629528" duration="2872000" />
-      <workItem from="1608563014804" duration="65950000" />
+      <workItem from="1608563014804" duration="67173000" />
     </task>
     <task id="LOCAL-00001" summary="added calculation">
       <created>1608570260165</created>
@@ -70,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608822066408</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="mobile adjustment">
+      <created>1608822250632</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608822250632</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

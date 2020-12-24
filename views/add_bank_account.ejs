@@ -118,9 +118,8 @@
     transition: all 250ms linear;
   }
   .logo img {
-    background-image: url("public/images/logo.jpg");
-    height: 90px;
-    width: auto;
+    height: 70px;
+    width: 100px;
     border-radius: 50px;
     display: block;
     transition: filter 250ms linear;
@@ -138,6 +137,15 @@
     color: #495057;
     padding: 1%;
     padding-left: 5%;
+  }
+  @media (max-width: 575px) {
+    .logo img {
+      height: 70px;
+      width: 20%;
+      border-radius: 50px;
+      display: block;
+      transition: filter 250ms linear;
+    }
   }
 
 </style>
@@ -180,5 +188,5 @@
 
 
 <a class="logo">
-  <img src="../images/logo.jpg" alt="">
+  <img src="https://www.worldbank.org/content/dam/photos/780x439/2018/jan-1/WBG-logo-780x439.jpg">
 </a>
